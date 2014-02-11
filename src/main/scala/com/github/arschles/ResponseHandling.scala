@@ -22,6 +22,7 @@ object ResponseHandling extends App {
       Success(Response())
     }
   }
+  //TODO: translate long GET requests to POST
 
   implicit val client = new ApacheHttpClient()
   val resFail = GET(url(http, "paypal.com")).apply.expectJSONBody[Throwable, Response](HttpResponseCode.Ok)

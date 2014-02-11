@@ -21,7 +21,7 @@ object TimeBoxing extends App {
   println(Await.result(buyResp, 2 seconds))
 
   //we can fall back if we don't get the business page back in time
-  println(Await.result(businessResp, 500 milliseconds))
+  println(Await.result(businessResp, 10 milliseconds))
 
   sys.exit(0)
 }

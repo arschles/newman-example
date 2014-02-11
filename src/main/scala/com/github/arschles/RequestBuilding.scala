@@ -7,16 +7,14 @@ import scala.concurrent._
 import scala.concurrent.duration._
 
 object RequestBuilding extends App {
-  implicit val client = new ApacheHttpClient()
+  //
+  //implicit val client = new FinagleHttpClient()
+  implicit val client = new SprayHttpClient()
 
-  val resp1 = GET(url(http, "paypal.com")).
-    addHeaders("hello" -> "world").
-    apply
-  /*
-  val resp1 = GET(url(http, "paypal.com")).
-   addBody("hello world").
-   apply
-  */
+  val resp1 = GET(url(http, "paypal.com")).addHeaders("hello" -> "world").apply
+  //won't compile - can't add body to GET request
+  //val resp1 = GET(url(http, "paypal.com")).addBody("hello world").apply
+
 
   val resp2 = POST(url(http, "paypal.com")).
     addHeaders("hello" -> "world").
